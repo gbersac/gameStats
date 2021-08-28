@@ -1,0 +1,20 @@
+[0m2021.08.28 10:39:13 INFO  Started: Metals version 0.10.5 in workspace 'C:\Users\Guillaume\prog\gamestats' for client Visual Studio Code 1.59.0.[0m
+[0m2021.08.28 10:39:14 INFO  time: initialize in 1.23s[0m
+[0m2021.08.28 10:39:14 WARN  Build server is not auto-connectable.[0m
+[0m2021.08.28 10:39:21 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\example\Hello.scala[0m
+[0m2021.08.28 10:39:26 INFO  no build target: using presentation compiler with only scala-library: 2.12.14[0m
+[0m2021.08.28 10:39:27 INFO  time: code lens generation in 5.48s[0m
+[0m2021.08.28 10:39:42 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\test\scala\example\HelloSpec.scala[0m
+Aug 28, 2021 10:55:05 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 24
+[0m2021.08.28 10:55:09 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\example\Hello.scala[0m
+Aug 28, 2021 10:55:19 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 31
+[0m2021.08.28 10:55:19 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\example\GameStats.scala[0m
+Aug 28, 2021 10:55:47 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 45
+[0m2021.08.28 10:55:47 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\gameStats\GameStats.scala[0m
+[0m2021.08.28 10:55:59 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\test\scala\gameStats\HelloSpec.scala[0m
+[0m2021.08.28 10:56:11 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\test\scala\gameStats\GameStats.scala[0m
+[0m2021.08.28 11:00:00 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\gameStats\GameStats.scala[0m
+[0m2021.08.28 11:00:10 WARN  no build target for: C:\Users\Guillaume\prog\gamestats\src\main\scala\gameStats\GameStats.scala[0m
