@@ -59,10 +59,14 @@ object GameStat {
 }
 
 object Main extends App {
-
-  //path = "doc/xml-test.xml"
-  //statToCheck = "total_final_third_passes"
-  
-
-
+  if (args.length < 2)
+    println("usage: gameStats path statToCkeck")
+  else {
+    val path = args(0)
+    val statToCheck = args(1)
+    MatchStats.fromXML(path).flatMap(m => GameStat(m, statToCheck)) match {
+      case Left(err) => println(err)
+      case Right(stats) => println(stats.toXML.toString())
+    }
+  }
 }
