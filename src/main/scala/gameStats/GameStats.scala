@@ -21,8 +21,8 @@ final case class GameStat(
       {bestPlayers.map { case (i, p) => 
         <PLAYER>
           <POSITION_IN_RANKING>{i + 1}</POSITION_IN_RANKING>
-          <FIRSTNAME>{p.firstName}</FIRSTNAME> 
-          <LASTNAME>{p.lastName}</LASTNAME> 
+          <FIRST_NAME>{p.firstName}</FIRST_NAME> 
+          <LAST_NAME>{p.lastName}</LAST_NAME> 
           <STATISTIC_VALUE>{p.stats.get(stat.toString).getOrElse("")}</STATISTIC_VALUE>
         </PLAYER>
       }}
@@ -60,10 +60,10 @@ object GameStat {
 
 object Main extends App {
   if (args.length < 2)
-    println("usage: gameStats path statToCkeck")
+    println("usage: gameStats statToCkeck path")
   else {
-    val path = args(0)
-    val statToCheck = args(1)
+    val statToCheck = args(0)
+    val path = args(1)
     MatchStats.fromXML(path).flatMap(m => GameStat(m, statToCheck)) match {
       case Left(err) => println(err)
       case Right(stats) => println(stats.toXML.toString())
