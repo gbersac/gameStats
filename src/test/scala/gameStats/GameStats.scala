@@ -21,5 +21,50 @@ class GameStatSpec extends AnyFlatSpec with Matchers {
     GameStat(matchs, s).right.get.statTeam1._1 shouldEqual 82
     GameStat(matchs, s).right.get.statTeam2._1 shouldEqual 76
   }
+
+  "The result XML" should "be correct" in {
+    val s = "fwd_pass"
+    val stats = GameStat(matchs, s).right.get
+    scala.xml.Utility.trim(stats.toXML).toString shouldEqual scala.xml.Utility.trim({
+      <RESULT>
+        <PLAYER>
+          <POSITION_IN_RANKING>1</POSITION_IN_RANKING>
+          <FIRSTNAME>Federico</FIRSTNAME>
+          <LASTNAME>Fernandez</LASTNAME>
+          <STATISTIC_VALUE>16</STATISTIC_VALUE>
+        </PLAYER><PLAYER>
+          <POSITION_IN_RANKING>2</POSITION_IN_RANKING>
+          <FIRSTNAME>Phil</FIRSTNAME>
+          <LASTNAME>Jagielka</LASTNAME>
+          <STATISTIC_VALUE>14</STATISTIC_VALUE>
+        </PLAYER><PLAYER>
+          <POSITION_IN_RANKING>3</POSITION_IN_RANKING>
+          <FIRSTNAME>Kyle</FIRSTNAME>
+          <LASTNAME>Naughton</LASTNAME>
+          <STATISTIC_VALUE>14</STATISTIC_VALUE>
+        </PLAYER><PLAYER>
+          <POSITION_IN_RANKING>4</POSITION_IN_RANKING>
+          <FIRSTNAME>Jordan</FIRSTNAME>
+          <LASTNAME>Pickford</LASTNAME>
+          <STATISTIC_VALUE>13</STATISTIC_VALUE>
+        </PLAYER><PLAYER>
+          <POSITION_IN_RANKING>5</POSITION_IN_RANKING>
+          <FIRSTNAME>Morgan</FIRSTNAME>
+          <LASTNAME>Schneiderlin</LASTNAME>
+          <STATISTIC_VALUE>12</STATISTIC_VALUE>
+        </PLAYER>
+        <TEAM>
+            <TEAM_SIDE>Home</TEAM_SIDE>
+            <TEAM_NAME>Swansea City</TEAM_NAME>
+            <SUM_OF_STATISTIC_VALUES>82.0</SUM_OF_STATISTIC_VALUES>
+        </TEAM>
+        <TEAM>
+            <TEAM_SIDE>Away</TEAM_SIDE>
+            <TEAM_NAME>Everton</TEAM_NAME>
+            <SUM_OF_STATISTIC_VALUES>76.0</SUM_OF_STATISTIC_VALUES>
+        </TEAM>
+      </RESULT>
+    }).toString
+  }
   
 }

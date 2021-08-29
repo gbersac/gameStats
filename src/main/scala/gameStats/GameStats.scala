@@ -1,11 +1,36 @@
 package gameStats
 
+import scala.xml.Elem
+
 final case class GameStat(
   stat: String,
   bestPlayers: Map[Int, Player], 
   statTeam1: (Float, Team), 
   statTeam2: (Float, Team)
-)
+) {
+  def toXML: Elem = {
+    def teamToXml(team: Team, stat: Float) = {
+      <TEAM>
+        <TEAM_SIDE>{team.teamSide.toString}</TEAM_SIDE>
+        <TEAM_NAME>{team.name}</TEAM_NAME>
+        <SUM_OF_STATISTIC_VALUES>{stat}</SUM_OF_STATISTIC_VALUES>
+      </TEAM>
+    }
+
+    <RESULT>
+      {bestPlayers.map { case (i, p) => 
+        <PLAYER>
+          <POSITION_IN_RANKING>{i + 1}</POSITION_IN_RANKING>
+          <FIRSTNAME>{p.firstName}</FIRSTNAME> 
+          <LASTNAME>{p.lastName}</LASTNAME> 
+          <STATISTIC_VALUE>{p.stats.get(stat.toString).getOrElse("")}</STATISTIC_VALUE>
+        </PLAYER>
+      }}
+      {teamToXml(statTeam1._2, statTeam1._1)}
+      {teamToXml(statTeam2._2, statTeam2._1)}
+    </RESULT>
+  }
+}
 
 object GameStat {
   def apply(matchs: MatchStats, stat: String): Either[String, GameStat] = for {
