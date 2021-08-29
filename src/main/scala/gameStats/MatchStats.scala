@@ -37,7 +37,8 @@ object TeamSide {
 final case class Team(
   name: String,
   teamSide: TeamSide,
-  players: Seq[Player]
+  players: Seq[Player],
+  stats: Map[String, Float]
 )
 
 object Team {
@@ -45,6 +46,8 @@ object Team {
     name <- (desc \ "Name").headOption.map(_.text).toRight("No team name")
     teamSideStr <- Try((data \@ "Side")).toEither.left.map(_ => "No team side")
     teamSide <- TeamSide.fromString(teamSideStr)
+    stats <- Try((data \ "Stat").map(p => (p \@ "Type", p.text.toFloat)).toMap)
+        .toEither.left.map(_ => s"Invalid team stats for team $name")
 
     // parsing player
     descs <- Try((desc \ "Player").map(p => (p \@ "uID", p.toList.head)))
@@ -55,10 +58,12 @@ object Team {
       case (Nil, rights) => Right(rights)
       case (lefts, _)    => Left(lefts.mkString(" # "))
     }
-  } yield Team(name, teamSide, players)
+  } yield Team(name, teamSide, players, stats)
 }
 
-final case class MatchStats(team1: Team, team2: Team)
+final case class MatchStats(team1: Team, team2: Team) {
+  def players: Seq[Player] = team1.players ++ team2.players
+}
 
 object MatchStats {
 

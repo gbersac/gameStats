@@ -9,19 +9,23 @@ class MatchStatsSpec extends AnyFlatSpec with Matchers {
     MatchStats.fromXML("wrongPath") shouldEqual Left("File does not exist")
   }
 
+  val parsed = MatchStats.fromXML("./doc/xml-test.xml")
+
   "The xml parser" should "find the correct team names" in {
-    MatchStats.fromXML("./doc/xml-test.xml")
-      .map(m => (m.team1.name, m.team2.name)) shouldEqual Right(("Swansea City", "Everton"))
+    parsed.map(m => (m.team1.name, m.team2.name)) shouldEqual Right(("Swansea City", "Everton"))
   }
 
   "The xml parser" should "parse the correct number of player" in {
-    MatchStats.fromXML("./doc/xml-test.xml")
-      .map(m => (m.team1.players.length, m.team2.players.length)) shouldEqual Right((18, 18))
+    parsed.map(m => (m.team1.players.length, m.team2.players.length)) shouldEqual Right((18, 18))
   }
 
   "The xml parser" should "parse the correct number of player stats" in {
-    MatchStats.fromXML("./doc/xml-test.xml")
-      .map(m => m.team1.players.find(p => p.uid == "p37096").get.stats.size) shouldEqual Right(40)
+    parsed.map(m => m.team1.players.find(p => p.uid == "p37096").get.stats.size) shouldEqual Right(40)
+  }
+
+  "The xml parser" should "parse the team stats" in {
+    parsed.map(m => m.team1.stats("fwd_pass")) shouldEqual Right(82)
+    parsed.map(m => m.team2.stats("fwd_pass")) shouldEqual Right(76)
   }
 
 }
