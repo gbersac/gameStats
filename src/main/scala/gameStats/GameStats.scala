@@ -1,7 +1,7 @@
-package example
+package gameStats
 
-object Hello extends Greeting with App {
-  path = "doc/xml-test.xml"
-  println("Hello world!")
+object Main extends App {
+  //path = "doc/xml-test.xml"
+  //statToCheck = "total_final_third_passes"
+  
 }
-
