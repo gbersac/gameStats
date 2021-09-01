@@ -29,28 +29,28 @@ class GameStatSpec extends AnyFlatSpec with Matchers {
       <RESULT>
         <PLAYER>
           <POSITION_IN_RANKING>1</POSITION_IN_RANKING>
-          <FIRSTNAME>Federico</FIRSTNAME>
-          <LASTNAME>Fernandez</LASTNAME>
+          <FIRST_NAME>Federico</FIRST_NAME>
+          <LAST_NAME>Fernandez</LAST_NAME>
           <STATISTIC_VALUE>16</STATISTIC_VALUE>
         </PLAYER><PLAYER>
           <POSITION_IN_RANKING>2</POSITION_IN_RANKING>
-          <FIRSTNAME>Phil</FIRSTNAME>
-          <LASTNAME>Jagielka</LASTNAME>
+          <FIRST_NAME>Phil</FIRST_NAME>
+          <LAST_NAME>Jagielka</LAST_NAME>
           <STATISTIC_VALUE>14</STATISTIC_VALUE>
         </PLAYER><PLAYER>
           <POSITION_IN_RANKING>3</POSITION_IN_RANKING>
-          <FIRSTNAME>Kyle</FIRSTNAME>
-          <LASTNAME>Naughton</LASTNAME>
+          <FIRST_NAME>Kyle</FIRST_NAME>
+          <LAST_NAME>Naughton</LAST_NAME>
           <STATISTIC_VALUE>14</STATISTIC_VALUE>
         </PLAYER><PLAYER>
           <POSITION_IN_RANKING>4</POSITION_IN_RANKING>
-          <FIRSTNAME>Jordan</FIRSTNAME>
-          <LASTNAME>Pickford</LASTNAME>
+          <FIRST_NAME>Jordan</FIRST_NAME>
+          <LAST_NAME>Pickford</LAST_NAME>
           <STATISTIC_VALUE>13</STATISTIC_VALUE>
         </PLAYER><PLAYER>
           <POSITION_IN_RANKING>5</POSITION_IN_RANKING>
-          <FIRSTNAME>Morgan</FIRSTNAME>
-          <LASTNAME>Schneiderlin</LASTNAME>
+          <FIRST_NAME>Morgan</FIRST_NAME>
+          <LAST_NAME>Schneiderlin</LAST_NAME>
           <STATISTIC_VALUE>12</STATISTIC_VALUE>
         </PLAYER>
         <TEAM>
