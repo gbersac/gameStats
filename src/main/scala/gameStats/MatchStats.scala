@@ -82,7 +82,7 @@ object MatchStats {
   def fromXML(path: String): Either[String, MatchStats] = {
     Try(Source.fromFile(path)) match {
       case Failure(exception) => 
-        Left("File does not exist")
+        Left(s"File $path does not exist")
       case Success(value) => 
         val xml = XML.loadString(value.getLines.mkString)
         ((xml \\ "Team").toList, (xml \\ "TeamData").toList) match {
