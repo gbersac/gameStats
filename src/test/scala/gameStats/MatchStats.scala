@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 // TODO add more test, especially more error tests.
 class MatchStatsSpec extends AnyFlatSpec with Matchers {
   "The xml parser" should "fail when the provided path point to a non existing file" in {
-    MatchStats.fromXML("wrongPath") shouldEqual Left("File does not exist")
+    MatchStats.fromXML("wrongPath") shouldEqual Left("File wrongPath does not exist")
   }
 
   val parsed = MatchStats.fromXML("./doc/xml-test.xml")
