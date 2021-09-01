@@ -2,7 +2,7 @@ package gameStats
 
 import scala.xml.Elem
 
-final case class GameStat(
+final case class SelectedStats(
   stat: String,
   bestPlayers: Map[Int, Player], 
   statTeam1: (Float, Team), 
@@ -32,8 +32,8 @@ final case class GameStat(
   }
 }
 
-object GameStat {
-  def apply(matchs: MatchStats, stat: String): Either[String, GameStat] = for {
+object SelectedStats {
+  def apply(matchs: MatchStats, stat: String): Either[String, SelectedStats] = for {
     bestPlayers <- {
       val players = matchs.players.filter(p => p.stats.contains(stat))
       if (players.length == 0) Left(s"No player has stat $stat")
@@ -50,7 +50,7 @@ object GameStat {
     }
     statTeam1 <- matchs.team1.stats.get(stat).toRight(s"No stat $stat for team ${matchs.team1.name}")
     statTeam2 <- matchs.team2.stats.get(stat).toRight(s"No stat $stat for team ${matchs.team2.name}")
-  } yield GameStat(
+  } yield SelectedStats(
     stat = stat, 
     bestPlayers = bestPlayers, 
     statTeam1 = (statTeam1, matchs.team1), 
@@ -64,7 +64,7 @@ object Main extends App {
   else {
     val statToCheck = args(0)
     val path = args(1)
-    MatchStats.fromXML(path).flatMap(m => GameStat(m, statToCheck)) match {
+    MatchStats.fromXML(path).flatMap(m => SelectedStats(m, statToCheck)) match {
       case Left(err) => println(err)
       case Right(stats) => println(stats.toXML.toString())
     }
